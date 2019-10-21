@@ -126,3 +126,6 @@ dmypy.json
 
 # Test DBs
 *.db
+
+# Mac Garbage
+.DS_Store
