@@ -1,0 +1,16 @@
+# Copy this file to /etc/systemd/system/ to create an Ubuntu Service
+[Unit]
+Description=uWSGI items rest
+
+[Service]
+Environment=DATABASE_URL=postgres://dave:sn4kesolid@localhost:5432/dave
+ExecStart=/var/www/html/items-rest/venv/bin/uwsgi --master --emperor /var/www/html/item
+s-rest/uwsgi.ini --die-on-term --uid dave --gid dave --logto /var/www/html/items-rest/l
+og/emperor.log
+Restart=always
+KillSignal=SIGQUIT
+Type=notify
+NotifyAcces=all
+
+[Install]
+WantedBy=multi-user.target
